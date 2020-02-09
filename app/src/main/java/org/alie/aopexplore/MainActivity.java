@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import org.alie.aopexplore.annotation.BehaviorConnectFunction;
 import org.alie.aopexplore.annotation.BehaviorTrace;
 
 import java.util.Random;
@@ -45,37 +46,41 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn1:
-                doSingleConnect();
+                doSingleConnect("11");
                 break;
             case R.id.btn2:
-                doSingleEmergencyConnect();
+                doSingleEmergencyConnect("22");
                 break;
             case R.id.btn3:
-                doDoubleConnect();
+                doDoubleConnect("33");
                 break;
             case R.id.btn4:
-                doDoubleEmergencyConnect();
+                doDoubleEmergencyConnect("44");
                 break;
         }
     }
 
-    @BehaviorTrace("单工呼叫")
-    private void doSingleConnect() {
+//    @BehaviorTrace("单工呼叫")
+    @BehaviorConnectFunction(name = "单工呼叫()")
+    private void doSingleConnect(String id) {
         SystemClock.sleep(new Random().nextInt(2000));
     }
 
-    @BehaviorTrace("单工紧急呼叫")
-    private void doSingleEmergencyConnect() {
+//    @BehaviorTrace("单工紧急呼叫")
+    @BehaviorConnectFunction(name = "单工紧急呼叫()")
+    private void doSingleEmergencyConnect(String id) {
         SystemClock.sleep(new Random().nextInt(2000));
     }
 
-    @BehaviorTrace("全双工呼叫")
-    private void doDoubleConnect() {
+//    @BehaviorTrace("全双工呼叫")
+    @BehaviorConnectFunction(name = "全双工呼叫()")
+    private void doDoubleConnect(String id) {
         SystemClock.sleep(new Random().nextInt(2000));
     }
 
-    @BehaviorTrace("全双工紧急呼叫")
-    private void doDoubleEmergencyConnect() {
+//    @BehaviorTrace("全双工紧急呼叫")
+    @BehaviorConnectFunction(name = "全双工紧急呼叫（）")
+    private void doDoubleEmergencyConnect(String id) {
         SystemClock.sleep(new Random().nextInt(2000));
     }
 }
